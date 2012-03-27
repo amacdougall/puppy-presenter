@@ -1,0 +1,11 @@
+%html
+  %head
+    %title Pictures of Puppies
+  %body
+    %div{:id => "content"}
+      %h1 Pictures of Puppies
+      %div{:class => "puppy-list"}
+      - images.each do |image|
+        %div{:class => "puppy"}
+          %img(src="#{image}")
+
