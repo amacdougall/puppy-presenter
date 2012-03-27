@@ -1,0 +1,13 @@
+# puppy mailer configuration
+# secrets
+client_id: "" # your app's client_id
+access_token: "" # a user access token with read access
+
+# file locations
+last_image_filename: "last_images.json"
+output_filename: "index.html"
+template_filename: "puppy_template.haml"
+
+# instagram-specific data
+target_user_name: "puppypalace" # for reference; not used
+target_user_id: "13359024"
