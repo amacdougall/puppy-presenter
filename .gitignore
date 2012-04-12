@@ -1,3 +1,5 @@
 *.sw[a-n]
 secrets.md
 config.yml
+.sass-cache/
+output/
