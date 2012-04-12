@@ -1,0 +1,35 @@
+/**
+ * Main stylesheet for puppy-presenter. Does initial layout of puppies in 4x4
+ * grid. That's all non-JS clients get; CoffeeScript handles the rest.
+ * TODO: generate this during the puppy generation script.
+ */
+$thumb-margin: 0;
+$thumb-width: 150px;
+$columns: 4;
+
+body {
+  margin: 0;
+  padding: 0;
+}
+
+#content {
+	margin: auto;
+}
+
+div {
+  position: relative;
+}
+
+div.puppy-list {
+  width: 612px;
+}
+
+div.puppy {
+  float: left;
+  margin: $thumb-margin;
+
+  img {
+    width: $thumb-width;
+    height: $thumb-width;
+  }
+}

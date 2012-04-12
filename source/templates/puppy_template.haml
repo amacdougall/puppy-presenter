@@ -1,0 +1,15 @@
+%html
+  %head
+    %title Pictures of Puppies
+    %script{src: "javascript/lib/jquery-1.7.1.min.js"}
+    %script{src: "javascript/lib/underscore-min.js"}
+    %script{src: "javascript/puppy-presenter.js"}
+    %script{src: "javascript/main.js"}
+    %link{rel: "stylesheet", href: "stylesheets/main.css"}
+  %body
+    %div{id: "content"}
+      %div{class: "puppy-list"}
+        - images.each do |image|
+          %div{class: "puppy", data: {full: image[:full], medium: image[:medium], thumb: image[:thumb]}}
+            %a{href: image[:full]}
+              %img{src: image[:thumb]}
