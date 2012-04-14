@@ -1,8 +1,11 @@
 # puppy-presenter client-side namespace
 this.Presenter =
-  container: null
   puppies: null
+  selected: null
 
+  thumbMargin: 6
+
+  # apply CSS directly
   thumb:
     width: 150
     height: 150
@@ -25,21 +28,20 @@ this.Presenter =
     maxLeft = Math.max puppy.position().left for puppy in Presenter.puppies
     maxTop = Math.max puppy.position().top for puppy in Presenter.puppies
 
+    swap = (outgoing, incoming) ->
+      incoming.css
+        left: outgoing.position().left
+        top: outgoing.position().left
+        width: outgoing.width()
+        height: outgoing.height()
+      outgoing.replaceWith incoming
+
     _(Presenter.puppies).each (puppy) ->
       left = puppy.position().left
       top = puppy.position().top
       thumbImg = puppy.find("img")
       mediumImg = $("<img>").one "load", ->
-        console.log "Loaded mediumImg: swapping"
         swap thumbImg, mediumImg
-
-      swap = (outgoing, incoming) ->
-        incoming.css
-          left: outgoing.position().left
-          top: outgoing.position().left
-          width: outgoing.width()
-          height: outgoing.height()
-        outgoing.replaceWith incoming
 
       puppy.toggle(
         (event) ->
@@ -60,9 +62,11 @@ this.Presenter =
           # move to stay in grid area
           compensation = {}
           if left is maxLeft
-            compensation.left = left - Presenter.medium.width / 2
+            compensation.left =
+              left - Presenter.medium.width / 2 - Presenter.thumbMargin / 2
           if top is maxTop
-            compensation.top = top - Presenter.medium.height / 2
+            compensation.top =
+              top - Presenter.medium.height / 2 - Presenter.thumbMargin / 2
           puppy.animate compensation
 
         (event) ->
@@ -103,5 +107,7 @@ this.Presenter =
         row += 1
         column = 1
 
-      puppy.css {left: column * Presenter.thumb.width, top: row * Presenter.thumb.height}
+      puppy.css
+        left: column * (Presenter.thumb.width + Presenter.thumbMargin)
+        top: row * (Presenter.thumb.height + Presenter.thumbMargin)
       column += 1

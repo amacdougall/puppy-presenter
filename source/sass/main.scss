@@ -3,7 +3,7 @@
  * grid. That's all non-JS clients get; CoffeeScript handles the rest.
  * TODO: generate this during the puppy generation script.
  */
-$thumb-margin: 0;
+$thumb-margin: 6px;
 $thumb-width: 150px;
 $columns: 4;
 
@@ -26,7 +26,6 @@ div.puppy-list {
 
 div.puppy {
   float: left;
-  margin: $thumb-margin;
 
   img {
     width: $thumb-width;
