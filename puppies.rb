@@ -41,8 +41,6 @@ output_file = File.open config["files"]["index"], "w"
 output_file.write output
 output_file.close
 
-# TODO: generate Coffeescript and Sass
-
 # copy static output files
 Dir[File.join config["files"]["static_dir"], "*"].each do |file|
   FileUtils.cp_r file, config["files"]["output_dir"]
